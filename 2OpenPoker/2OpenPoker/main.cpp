@@ -13,10 +13,6 @@ enum class GAME_STATE {
 	EXIT = 99
 };
 
-int	g_OldKey;				// 前回の入力キー
-int	g_NowKey;				// 今回の入力キー
-int	g_KeyFlg;				// 入力キー情報
-
 /***********************************************
  * クラス型変数
  ***********************************************/
@@ -42,13 +38,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 	GAME_STATE	g_GameState = GAME_STATE::GAME_MAIN; // ゲームステータス
 													 
 	// ゲームループ
-	while (ProcessMessage() == 0 && g_GameState != GAME_STATE::EXIT)
+	while (ProcessMessage() == 0)
 	{
-		// 入力キー取得
-		g_OldKey = g_NowKey;
-		g_NowKey = GetJoypadInputState(DX_INPUT_KEY_PAD1);
-		g_KeyFlg = g_NowKey & ~g_OldKey;
-
 		ClearDrawScreen();		// 画面の初期化
 		
 		switch (g_GameState)
@@ -59,6 +50,26 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 			break;
 		}
 	}
+
+	/*while (ProcessMessage() == 0)
+	{
+		double dNextTime = GetNowCount();
+		data = controller.Judge();
+		ClearDrawScreen();
+		if (data->Buttons[XINPUT_BUTTON_BACK] == 1 || (CheckHitKey(KEY_INPUT_ESCAPE) == 1)) break;
+		if (sceneMng.Update(data) != nullptr) {
+
+			sceneMng.Draw();
+		}
+		else {
+			break;
+		}
+
+		if (dNextTime + 16.66 > GetNowCount()) {
+			WaitTimer((int)dNextTime - GetNowCount());
+		}
+		ScreenFlip();
+	}*/
 
 	DxLib_End();	// DXライブラリ使用の終了処理
 
