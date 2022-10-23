@@ -53,26 +53,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 		}
 	}
 
-	/*while (ProcessMessage() == 0)
-	{
-		double dNextTime = GetNowCount();
-		data = controller.Judge();
-		ClearDrawScreen();
-		if (data->Buttons[XINPUT_BUTTON_BACK] == 1 || (CheckHitKey(KEY_INPUT_ESCAPE) == 1)) break;
-		if (sceneMng.Update(data) != nullptr) {
-
-			sceneMng.Draw();
-		}
-		else {
-			break;
-		}
-
-		if (dNextTime + 16.66 > GetNowCount()) {
-			WaitTimer((int)dNextTime - GetNowCount());
-		}
-		ScreenFlip();
-	}*/
-
 	DxLib_End();	// DXライブラリ使用の終了処理
 
 	return 0;	// ソフトの終了
