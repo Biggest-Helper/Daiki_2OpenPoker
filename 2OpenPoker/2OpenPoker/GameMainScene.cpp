@@ -4,12 +4,13 @@
 //描画以外の更新を実装する
 AbstractScene* GameMainScene::Update()
 {
+	g_BackImage = LoadGraph("../images/GreenFelt.png");
+
 	return this;
 }
 
 //描画に関することを実装する
 void GameMainScene::Draw() const
 {
-	DrawString(100, 100, "Title", 0xffffff, TRUE);
-	DrawString(200, 200, "STARTボタンでGameMain", 0xffffff, TRUE);
+	DrawExtendGraph(0, 0, 1280, 720, g_BackImage, TRUE);
 }

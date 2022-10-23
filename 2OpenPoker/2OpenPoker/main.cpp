@@ -13,10 +13,14 @@ enum class GAME_STATE {
 	EXIT = 99
 };
 
+
+
 /***********************************************
  * クラス型変数
  ***********************************************/
 GameMainScene MAIN;
+
+
 
 /***********************************************
  * プログラムの開始
@@ -30,8 +34,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 	SetGraphMode(1280, 720, 32);
 
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
-
-	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
 
 	SetFontSize(20);		// 文字サイズを設定
 
