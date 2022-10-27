@@ -16,6 +16,12 @@ AbstractScene* GameMainScene::Update()
 void GameMainScene::Draw() const
 {
 	Card C;
-	DrawExtendGraph(0, 0, 1280, 720, g_BackImage, TRUE);
-	DrawRotaGraph(270, 180, 1.0f, PI / 2, C.getCard(), TRUE);
+	DrawExtendGraph(0, 0, 1280, 720, g_BackImage, FALSE);
+	/*DrawString(200, 200, "テストテストあー、あー、", 0xffffff);*/
+	DrawRotaGraph(0, 180, 1.0f, 0, C.s_1(), FALSE);
+	DrawRotaGraph(50, 180, 1.0f, 0, C.s_2(), FALSE);
+	DrawRotaGraph(100, 180, 1.0f, 0, C.s_3(), FALSE);
+	DrawRotaGraph(150, 180, 1.0f, 0, C.s_4(), FALSE);
+	DrawRotaGraph(200, 180, 1.0f, 0, C.s_5(), FALSE);
+	DrawRotaGraph(250, 180, 1.0f, 0, C.s_6(), FALSE);
 }
