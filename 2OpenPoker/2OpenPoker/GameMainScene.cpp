@@ -10,6 +10,9 @@ AbstractScene* GameMainScene::Update()
 {
 	g_BackImage = LoadGraph("../images/GreenFelt.png");
 
+	Point P;
+	P.Anty();
+
 	return this;
 }
 
@@ -24,6 +27,8 @@ void GameMainScene::Draw() const
 
 	//プレイヤー、CPUの所持ベット描画
 	pt.DrawHavePoints();
+
+	//ベット合計描画
 	pt.DrawSumBetPoints();
 
 	//プレイヤー手札

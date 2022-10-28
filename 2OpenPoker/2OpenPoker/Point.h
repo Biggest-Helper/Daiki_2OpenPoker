@@ -18,6 +18,7 @@ protected:
 public:
 	void DrawHavePoints();
 	void DrawSumBetPoints();
+	void Anty();
 
 	int GetPlayerPt();
 	int GetCPUPt_left();

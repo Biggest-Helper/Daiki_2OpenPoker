@@ -36,6 +36,17 @@ void Point::DrawSumBetPoints()
 	DrawFormatString(627, 365, GetColor(0, 0, 0), "%d", sum_bet);
 }
 
+void Point::Anty()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		cpu_pt[i] -= anty;
+		sum_bet += anty;
+	}
+	player_pt -= anty;
+	sum_bet += anty;
+}
+
 int Point::GetPlayerPt()
 {
 	return player_pt;
