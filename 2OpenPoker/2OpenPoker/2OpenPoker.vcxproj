@@ -157,6 +157,7 @@
     <ClCompile Include="Controller.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Controller.h" />
     <ClInclude Include="GameMainScene.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
