@@ -11,7 +11,8 @@ void Point::DrawHavePoints()
 			DrawBox(850, 520, 950, 560, GetColor(255, 255, 255), TRUE);
 			DrawString(870, 525, "プレイヤー", GetColor(0, 0, 0));
 			DrawString(860, 540, "所持pt :", GetColor(0, 0, 0));
-			DrawString(910, 540, "0pt", GetColor(0, 0, 0));
+			/*DrawString(910, 540, "0pt", GetColor(0, 0, 0));*/
+			DrawFormatString(910, 540, GetColor(0, 0, 0), "%dpt", player_pt);
 		}
 		else
 		{
@@ -19,7 +20,8 @@ void Point::DrawHavePoints()
 				GetColor(255, 255, 255), TRUE);
 			DrawString(cpu_pt_posX[i] + 35, cpu_pt_posY[i] + 5, "CPU", GetColor(0, 0, 0));
 			DrawString(cpu_pt_posX[i] + 10, cpu_pt_posY[i] + 20, "所持pt :", GetColor(0, 0, 0));
-			DrawString(cpu_pt_posX[i] + 60, cpu_pt_posY[i] + 20, "0pt", GetColor(0, 0, 0));
+			/*DrawString(cpu_pt_posX[i] + 60, cpu_pt_posY[i] + 20, "0pt", GetColor(0, 0, 0));*/
+			DrawFormatString(cpu_pt_posX[i] + 60, cpu_pt_posY[i] + 20, GetColor(0, 0, 0), "%dpt", cpu_pt[i]);
 		}
 	}
 }
@@ -30,7 +32,8 @@ void Point::DrawSumBetPoints()
 	SetFontSize(12);
 	DrawString(610, 345, "ベット合計", GetColor(0, 0, 0));
 	SetFontSize(14);
-	DrawString(620, 365, "2200pt", GetColor(0, 0, 0));
+	/*DrawString(620, 365, "2200pt", GetColor(0, 0, 0));*/
+	DrawFormatString(627, 365, GetColor(0, 0, 0), "%d", sum_bet);
 }
 
 int Point::GetPlayerPt()
@@ -38,17 +41,17 @@ int Point::GetPlayerPt()
 	return player_pt;
 }
 
-int Point::GetCPU1Pt()
+int Point::GetCPUPt_left()
 {
-	return cpu1_pt;
+	return cpu_pt[0];
 }
 
-int Point::GetCPU2Pt()
+int Point::GetCPUPt_senter()
 {
-	return cpu2_pt;
+	return cpu_pt[1];
 }
 
-int Point::GetCPU3Pt()
+int Point::GetCPUPt_right()
 {
-	return cpu3_pt;
+	return cpu_pt[2];
 }

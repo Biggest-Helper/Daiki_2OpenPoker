@@ -3,12 +3,12 @@ class Point
 {
 private:
 	int player_pt = 5000;
-	int cpu1_pt = 5000;
-	int cpu2_pt = 5000;
-	int cpu3_pt = 5000;
+	int cpu_pt[3] = { 5000, 5000, 5000 };
 
-	int cpu_pt_posX[3] = { 330, 150, 1130 };
-	int cpu_pt_posY[3] = { 50, 550, 170 };
+	int cpu_pt_posX[3] = { 150, 330, 1130 };
+	int cpu_pt_posY[3] = { 550, 50, 170 };
+
+	int sum_bet = 0;
 
 protected:
 	const int anty = 20;
@@ -20,7 +20,7 @@ public:
 	void DrawSumBetPoints();
 
 	int GetPlayerPt();
-	int GetCPU1Pt();
-	int GetCPU2Pt();
-	int GetCPU3Pt();
+	int GetCPUPt_left();
+	int GetCPUPt_senter();
+	int GetCPUPt_right();
 };
