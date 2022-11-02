@@ -7,16 +7,18 @@ private:
 	int card_back;
 
 public:
-	struct Cards
+	/*struct Cards
 	{
 		int img;
 	};
-	struct Cards cards[52];
+	struct Cards cards[52];*/
 
 public:
 	int LoadImages();
 	int GetJoker();
 	int GetBack();
+
+	int CardDistribution();
 
 	//スペードのカード
 	int s_1();

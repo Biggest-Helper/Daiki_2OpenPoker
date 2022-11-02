@@ -37,4 +37,12 @@ void GameMainScene::Draw() const
 	DrawRotaGraph(640, 500, 1.0f, 0, C.s_3(), FALSE);
 	DrawRotaGraph(720, 500, 1.0f, 0, C.s_4(), FALSE);
 	DrawRotaGraph(800, 500, 1.0f, 0, C.s_5(), FALSE);
+
+	//カード配布
+	/*for (int i = 0; i < 5; i++)
+	{
+		int GetCard = C.CardDistribution();
+		DrawRotaGraph(480, 500, 1.0f, 0, GetCard, FALSE);
+	}*/
+
 }

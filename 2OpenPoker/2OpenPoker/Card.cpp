@@ -10,6 +10,16 @@ int Card::LoadImages()
 	return 0;
 }
 
+int Card::CardDistribution()
+{
+	int x = rand() % 54;
+	if(x > 52)
+	{
+		return joker;
+	}
+	return LoadCard[x];
+}
+
 //ジョーカーを返す
 int Card::GetJoker()
 {
