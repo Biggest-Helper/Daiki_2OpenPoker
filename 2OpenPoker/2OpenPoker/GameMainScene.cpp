@@ -34,6 +34,12 @@ void GameMainScene::Draw() const
 	//ベット合計描画
 	pt.DrawSumBetPoints();
 
+
+
+	//乱数は一度だけ呼び出し&参照し、
+	//以降のループは乱数から渡した変数を参照する
+	//アルゴリズムを作る
+
 	int GetCard[20];
 
 	//カード配布(プレイヤー)
@@ -41,6 +47,7 @@ void GameMainScene::Draw() const
 	int PosY = 550;
 	for (int i = 0; i < 5; i++)
 	{
+		/*GetCard[i] = C.Card_RanNum();*/
 		GetCard[i] = C.CardDistribution();
 		DrawRotaGraph(PosX, PosY , 1.0f, 0, GetCard[i], FALSE);
 		PosX += 80;
@@ -51,6 +58,7 @@ void GameMainScene::Draw() const
 	PosY = 190;
 	for (int i = 0; i < 5; i++)
 	{
+		/*GetCard[i + 5] = C.Card_RanNum();*/
 		GetCard[i + 5] = C.CardDistribution();
 		DrawRotaGraph(PosX, PosY, 0.9f, PI / 2, GetCard[i + 5], FALSE);
 		PosY += 80;
@@ -61,6 +69,7 @@ void GameMainScene::Draw() const
 	PosY = 160;
 	for (int i = 0; i < 5; i++)
 	{
+		/*GetCard[i + 10] = C.Card_RanNum();*/
 		GetCard[i + 10] = C.CardDistribution();
 		DrawRotaGraph(PosX, PosY, 1.0f, -PI, GetCard[i + 10], FALSE);
 		PosX += 80;
@@ -71,6 +80,7 @@ void GameMainScene::Draw() const
 	PosY = 190;
 	for (int i = 0; i < 5; i++)
 	{
+		/*GetCard[i + 15] = C.Card_RanNum();*/
 		GetCard[i + 15] = C.CardDistribution();
 		DrawRotaGraph(PosX, PosY, 0.9f, PI / -2, GetCard[i + 15], FALSE);
 		PosY += 80;

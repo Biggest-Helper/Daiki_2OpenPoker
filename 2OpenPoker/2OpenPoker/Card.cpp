@@ -1,6 +1,10 @@
 #include "DxLib.h"
 #include "Card.h"
 
+int RanNumCnt = 0;
+int HandCard[20];
+int RanNumCnt2 = -1;
+
 int Card::LoadImages()
 {
 	if (LoadDivGraph("../images/Card_Sozai_3.png", 52, 13, 5, 49, 75, LoadCard) == -1)return -1;
@@ -10,14 +14,44 @@ int Card::LoadImages()
 	return 0;
 }
 
-int Card::CardDistribution()
+int Card::Card_RanNum()
 {
-	int x = rand() % 54;
-	if(x > 52)
+	int x = rand() % 53;
+	if (x > 51)
 	{
 		return joker;
 	}
 	return LoadCard[x];
+}
+
+int Card::CardDistribution()
+{
+	//乱数は一度だけ呼び出し&参照し、
+	//以降のループは乱数から渡した変数を参照する
+	//アルゴリズムを作る
+
+	if (RanNumCnt < 20)
+	{
+		for (int i = 0; i < 20; i++)
+		{
+			HandCard[i] = Card_RanNum();
+		}
+		return HandCard[RanNumCnt];
+		RanNumCnt++;
+	}
+	/*else
+	{
+		if (RanNumCnt2 <= 20)
+		{
+			
+			return HandCard[RanNumCnt2];
+			RanNumCnt++;
+		}
+		else
+		{
+			RanNumCnt = -1;
+		}
+	}*/
 }
 
 //ジョーカーを返す
@@ -26,6 +60,7 @@ int Card::GetJoker()
 	return joker;
 }
 
+//カード裏面を返す
 int Card::GetBack()
 {
 	return card_back;
