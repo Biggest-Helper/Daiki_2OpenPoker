@@ -5,7 +5,9 @@ class GameMainScene : public AbstractScene
 {
 private:
 	int g_BackImage = 0;
-	/*int Phese = 0;*/
+
+public:
+	int Phese = 0;
 
 public:
 	virtual ~GameMainScene()

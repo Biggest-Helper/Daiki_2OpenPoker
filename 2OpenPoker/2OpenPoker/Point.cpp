@@ -8,11 +8,11 @@ void Point::DrawHavePoints()
 	{
 		if (i == 3)
 		{
-			DrawBox(850, 520, 950, 560, GetColor(255, 255, 255), TRUE);
-			DrawString(870, 525, "プレイヤー", GetColor(0, 0, 0));
-			DrawString(860, 540, "所持pt :", GetColor(0, 0, 0));
+			DrawBox(850, 550, 950, 590, GetColor(255, 255, 255), TRUE);
+			DrawString(870, 555, "プレイヤー", GetColor(0, 0, 0));
+			DrawString(860, 570, "所持pt :", GetColor(0, 0, 0));
 			/*DrawString(910, 540, "0pt", GetColor(0, 0, 0));*/
-			DrawFormatString(910, 540, GetColor(0, 0, 0), "%dpt", player_pt);
+			DrawFormatString(910, 570, GetColor(0, 0, 0), "%dpt", player_pt);
 		}
 		else
 		{

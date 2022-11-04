@@ -5,8 +5,8 @@ private:
 	int player_pt = 5000;
 	int cpu_pt[3] = { 5000, 5000, 5000 };
 
-	int cpu_pt_posX[3] = { 150, 330, 1130 };
-	int cpu_pt_posY[3] = { 550, 50, 170 };
+	int cpu_pt_posX[3] = { 150, 585, 1030 };
+	int cpu_pt_posY[3] = { 330, 50, 330 };
 
 	int sum_bet = 0;
 
