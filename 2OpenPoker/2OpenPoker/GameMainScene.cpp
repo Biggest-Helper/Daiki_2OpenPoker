@@ -13,8 +13,8 @@ AbstractScene* GameMainScene::Update()
 
 	Point P;
 
-	//アンティ処理
-	P.Anty();
+	////アンティ処理
+	//P.Anty();
 
 	return this;
 }
