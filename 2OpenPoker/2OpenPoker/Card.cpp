@@ -8,7 +8,7 @@ int C_Flag = TRUE;
 
 int Card::LoadImages()
 {
-	if (LoadDivGraph("../images/Card_Sozai_3.png", 52, 13, 5, 49, 75, LoadCard) == -1)return -1;
+	if (LoadDivGraph("../images/Card_Sozai_4.png", 52, 13, 4, 49, 70, LoadCard) == -1)return -1;
 	if (joker = LoadGraph("../images/Joker.png") == -1)return -1;
 	if (card_back = LoadGraph("../images/Back_Card.png") == -1)return -1;
 
@@ -28,43 +28,24 @@ int Card::Card_RanNum()
 int Card::CardDistribution()
 {
 	//乱数は一度だけ呼び出し&参照し、
-	//以降のループは乱数から渡した変数を参照する
+	//以降のループは乱数から渡した変数のみを参照する
 	//アルゴリズムを作る
-
-	
 	if (RanNumCnt < 20)
 	{
 		RanNumCnt++;
 		HandCard[RanNumCnt - 1] = Card_RanNum();
 		return HandCard[RanNumCnt - 1];
 	}
-
-	/*if (C_Flag == TRUE)
-	{
-		C_Flag == FALSE;
-		return HandCard[RanNumCnt2];
-	}
-	else if(C_Flag == FALSE && RanNumCnt < 20)
-	{
-		C_Flag = TRUE;
-		RanNumCnt2++;
-	}
-	else
-	{
-		C_Flag = TRUE;
-		RanNumCnt2 = 0;
-	}*/
-
-	/*else if(RanNumCnt2 < 20)
+	else if(RanNumCnt2 < 20)
 	{
 		RanNumCnt2++;
 		return HandCard[RanNumCnt2 - 1];
 	}
 	else
 	{
-		RanNumCnt2 = 0;
-		return HandCard[RanNumCnt2];
-	}*/
+		RanNumCnt2 = 1;
+		return HandCard[RanNumCnt2 - 1];
+	}
 }
 
 //ジョーカーを返す
