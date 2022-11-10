@@ -1,4 +1,5 @@
 #include "DxLib.h"
+#include "time.h"
 #include "GameMainScene.h"
 
 //ゲームステート
@@ -29,6 +30,8 @@ GameMainScene MAIN;
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 	_In_ LPSTR lpCmdLine, _In_ int nShowCmd) 
 {
+	srand(time(NULL));
+
 	// タイトルを test に変更
 	SetMainWindowText(" 2 Open Poker ");
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動

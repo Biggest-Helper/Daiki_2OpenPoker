@@ -47,8 +47,16 @@ void GameMainScene::Draw() const
 	int PosY = 550;
 	for (int i = 0; i < 5; i++)
 	{
-		/*GetCard[i] = C.Card_RanNum();*/
 		GetCard[i] = C.CardDistribution();
+		/*for (int j = 0; j < 5; j++)
+		{
+			if (GetCard[i] == GetCard[j])
+			{
+				GetCard[i] == GetCard[i - 1];
+				i--;
+				break;
+			}
+		}*/
 		DrawRotaGraph(PosX, PosY , 1.0f, 0, GetCard[i], FALSE);
 		PosX += 80;
 	}

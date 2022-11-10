@@ -17,8 +17,9 @@ int Card::LoadImages()
 
 int Card::Card_RanNum()
 {
-	int x = rand() % 53;
-	if (x > 51)
+	//ジョーカー抜粋
+	int x = rand() % 52;
+	if (x > 52)
 	{
 		return joker;
 	}
