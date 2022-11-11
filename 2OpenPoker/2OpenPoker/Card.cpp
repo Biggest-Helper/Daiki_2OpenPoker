@@ -5,6 +5,7 @@ int RanNumCnt = 0;
 int HandCard[20];
 int RanNumCnt2 = 0;
 int C_Flag = TRUE;
+int SaveCard[20];
 
 int Card::LoadImages()
 {
@@ -35,6 +36,19 @@ int Card::CardDistribution()
 	{
 		RanNumCnt++;
 		HandCard[RanNumCnt - 1] = Card_RanNum();
+		for (int i = 0; i < 20; i++)
+		{
+			if (HandCard[RanNumCnt - 1] == SaveCard[i])
+			{
+				HandCard[RanNumCnt - 1] = NULL;
+				RanNumCnt--;
+				return -1;
+			}
+			else if(RanNumCnt - 1 == i)
+			{
+				SaveCard[i] = HandCard[RanNumCnt - 1];
+			}
+		}
 		return HandCard[RanNumCnt - 1];
 	}
 	else if(RanNumCnt2 < 20)
