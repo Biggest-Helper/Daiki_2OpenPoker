@@ -9,6 +9,7 @@ int	g_OldKey;				// 前回の入力キー
 int	g_NowKey;				// 今回の入力キー
 int	g_KeyFlg;				// 入力キー情報
 int selectNum = 0;
+int Phase = 0;
 
 //描画以外の更新を実装する
 AbstractScene* GameMainScene::Update()
@@ -19,29 +20,60 @@ AbstractScene* GameMainScene::Update()
 
 	g_BackImage = LoadGraph("../images/GreenFelt.png");
 
-	//カーソル移動処理
-	if (g_KeyFlg & PAD_INPUT_RIGHT)
+	////CPUベッティング (デバッグ用AI非実装 全部コール選択)
+	//if (Phese == 0)
+	//{
+
+	//}
+
+	if (Phese == 0)
 	{
-		selectNum++;
-		if (selectNum > 2)
+		//カーソル移動処理
+		if (g_KeyFlg & PAD_INPUT_RIGHT)
 		{
-			selectNum = 0;
+			selectNum++;
+			if (selectNum > 2)
+			{
+				selectNum = 0;
+			}
 		}
-	}
-	if (g_KeyFlg & PAD_INPUT_LEFT)
-	{
-		selectNum--;
-		if (selectNum < 0)
+		if (g_KeyFlg & PAD_INPUT_LEFT)
 		{
-			selectNum = 2;
+			selectNum--;
+			if (selectNum < 0)
+			{
+				selectNum = 2;
+			}
+		}
+
+		//Aボタンで選択肢決定
+		if (g_KeyFlg & PAD_INPUT_A)
+		{
+			//レイズ処理
+			if (selectNum == 0)
+			{
+				selectNum = 99;
+				Phese = 1;
+			}
+
+			//コール処理
+			if (selectNum == 1)
+			{
+
+				selectNum = 99;
+				Phese = 1;
+			}
+
+			//フォールド処理
+			if (selectNum == 2)
+			{
+				selectNum = 99;
+				Phese = 1;
+			}
 		}
 	}
 
-	//Aボタンで選択肢決定
-	if (g_KeyFlg & PAD_INPUT_A) 
-	{
-		
-	}
+	
 
 	return this;
 }
@@ -147,15 +179,19 @@ void GameMainScene::Draw() const
 		}
 	}
 
-	//選択肢描画
-	SetFontSize(15);
-	DrawBox(440, 650, 540, 690, GetColor(255, 255, 255), TRUE);
-	DrawFormatString(464, 662, GetColor(0, 0, 0), "レイズ");
-	DrawBox(590, 650, 690, 690, GetColor(255, 255, 255), TRUE);
-	DrawFormatString(615, 662, GetColor(0, 0, 0), "コール");
-	DrawBox(740, 650, 840, 690, GetColor(255, 255, 255), TRUE);
-	DrawFormatString(748, 662, GetColor(0, 0, 0), "フォールド");
+	if (Phese == 0)
+	{
+		//選択肢描画
+		SetFontSize(15);
+		DrawBox(440, 650, 540, 690, GetColor(255, 255, 255), TRUE);
+		DrawFormatString(464, 662, GetColor(0, 0, 0), "レイズ");
+		DrawBox(590, 650, 690, 690, GetColor(255, 255, 255), TRUE);
+		DrawFormatString(615, 662, GetColor(0, 0, 0), "コール");
+		DrawBox(740, 650, 840, 690, GetColor(255, 255, 255), TRUE);
+		DrawFormatString(748, 662, GetColor(0, 0, 0), "フォールド");
 
-	//カーソル描画
-	DrawBox(cursorX[selectNum], 650, cursorX[selectNum] + 100, 690, GetColor(255, 0, 0), FALSE);
+		//カーソル描画
+		DrawBox(cursorX[selectNum], 650, cursorX[selectNum] + 100, 690, GetColor(255, 0, 0), FALSE);
+	}
+
 }
