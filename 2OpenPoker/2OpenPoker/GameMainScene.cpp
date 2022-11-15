@@ -5,16 +5,43 @@
 
 #define PI    3.1415926535897932384626433832795f
 int Flag = TRUE;
+int	g_OldKey;				// 前回の入力キー
+int	g_NowKey;				// 今回の入力キー
+int	g_KeyFlg;				// 入力キー情報
+int selectNum = 0;
 
 //描画以外の更新を実装する
 AbstractScene* GameMainScene::Update()
 {
+	g_OldKey = g_NowKey;
+	g_NowKey = GetJoypadInputState(DX_INPUT_KEY_PAD1);
+	g_KeyFlg = g_NowKey & ~g_OldKey;
+
 	g_BackImage = LoadGraph("../images/GreenFelt.png");
 
-	Point P;
+	//カーソル移動処理
+	if (g_KeyFlg & PAD_INPUT_RIGHT)
+	{
+		selectNum++;
+		if (selectNum > 2)
+		{
+			selectNum = 0;
+		}
+	}
+	if (g_KeyFlg & PAD_INPUT_LEFT)
+	{
+		selectNum--;
+		if (selectNum < 0)
+		{
+			selectNum = 2;
+		}
+	}
 
-	////アンティ処理
-	//P.Anty();
+	//Aボタンで選択肢決定
+	if (g_KeyFlg & PAD_INPUT_A) 
+	{
+		
+	}
 
 	return this;
 }
@@ -35,10 +62,6 @@ void GameMainScene::Draw() const
 	pt.DrawSumBetPoints();
 
 
-
-	//乱数は一度だけ呼び出し&参照し、
-	//以降のループは乱数から渡した変数を参照する
-	//アルゴリズムを作る
 
 	int GetCard[20];
 
@@ -123,4 +146,16 @@ void GameMainScene::Draw() const
 			PosY += 80;
 		}
 	}
+
+	//選択肢描画
+	SetFontSize(15);
+	DrawBox(440, 650, 540, 690, GetColor(255, 255, 255), TRUE);
+	DrawFormatString(464, 662, GetColor(0, 0, 0), "レイズ");
+	DrawBox(590, 650, 690, 690, GetColor(255, 255, 255), TRUE);
+	DrawFormatString(615, 662, GetColor(0, 0, 0), "コール");
+	DrawBox(740, 650, 840, 690, GetColor(255, 255, 255), TRUE);
+	DrawFormatString(748, 662, GetColor(0, 0, 0), "フォールド");
+
+	//カーソル描画
+	DrawBox(cursorX[selectNum], 650, cursorX[selectNum] + 100, 690, GetColor(255, 0, 0), FALSE);
 }
