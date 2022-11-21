@@ -33,7 +33,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 	// タイトルを test に変更
 	SetMainWindowText(" 2 Open Poker ");
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動
-	SetGraphMode(1280, 720, 32);   //ウィンドウのサイズ変更
+	SetWindowSize(1280, 720);   //ウィンドウのサイズ変更
+	SetGraphMode(1280, 720, 16);
 
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 

@@ -2,7 +2,7 @@
 class Card
 {
 private:
-	int LoadCard[52];
+	int LoadCard[54];
 	int joker;
 	int card_back;
 

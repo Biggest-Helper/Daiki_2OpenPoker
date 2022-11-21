@@ -193,5 +193,4 @@ void GameMainScene::Draw() const
 		//ÉJÅ[É\Éãï`âÊ
 		DrawBox(cursorX[selectNum], 650, cursorX[selectNum] + 100, 690, GetColor(255, 0, 0), FALSE);
 	}
-
 }

@@ -10,8 +10,8 @@ int SaveCard[20];
 int Card::LoadImages()
 {
 	if (LoadDivGraph("../images/Card_Sozai_4.png", 52, 13, 4, 49, 70, LoadCard) == -1)return -1;
-	if (joker = LoadGraph("../images/Joker.png") == -1)return -1;
-	if (card_back = LoadGraph("../images/Back_Card.png") == -1)return -1;
+	joker = LoadGraph("../images/Joker.png");
+	card_back = LoadGraph("../images/Back_Card2.png");
 
 	return 0;
 }
@@ -19,8 +19,8 @@ int Card::LoadImages()
 int Card::Card_RanNum()
 {
 	//ジョーカー抜粋
-	int x = rand() % 52;
-	if (x > 52)
+	int x = rand() % 54;
+	if (x > 51)
 	{
 		return joker;
 	}
