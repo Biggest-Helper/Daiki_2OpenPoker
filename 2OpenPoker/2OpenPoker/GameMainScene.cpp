@@ -10,6 +10,8 @@ int	g_NowKey;				// 今回の入力キー
 int	g_KeyFlg;				// 入力キー情報
 int selectNum = 0;
 int Phase = 0;
+int betFlg = TRUE;
+int AntyFlag = TRUE;
 
 //描画以外の更新を実装する
 AbstractScene* GameMainScene::Update()
@@ -20,11 +22,14 @@ AbstractScene* GameMainScene::Update()
 
 	g_BackImage = LoadGraph("../images/GreenFelt.png");
 
-	////CPUベッティング (デバッグ用AI非実装 全部コール選択)
-	//if (Phese == 0)
-	//{
+	Point pt;
 
-	//}
+	//CPUベッティング (デバッグ用AI非実装 全部コール選択)
+	if (Phese == 0 && betFlg == TRUE)
+	{
+		pt.CPU_Bet();
+		betFlg = FALSE;
+	}
 
 	if (Phese == 0)
 	{
@@ -52,6 +57,7 @@ AbstractScene* GameMainScene::Update()
 			//レイズ処理
 			if (selectNum == 0)
 			{
+				pt.BetSelectFlg(0);
 				selectNum = 99;
 				Phese = 1;
 			}
@@ -59,7 +65,7 @@ AbstractScene* GameMainScene::Update()
 			//コール処理
 			if (selectNum == 1)
 			{
-
+				pt.BetSelectFlg(1);
 				selectNum = 99;
 				Phese = 1;
 			}
@@ -67,6 +73,7 @@ AbstractScene* GameMainScene::Update()
 			//フォールド処理
 			if (selectNum == 2)
 			{
+				pt.BetSelectFlg(2);
 				selectNum = 99;
 				Phese = 1;
 			}
@@ -193,4 +200,9 @@ void GameMainScene::Draw() const
 		//カーソル描画
 		DrawBox(cursorX[selectNum], 650, cursorX[selectNum] + 100, 690, GetColor(255, 0, 0), FALSE);
 	}
+}
+
+int GameMainScene::getSelectNum()
+{
+	return selectNum;
 }

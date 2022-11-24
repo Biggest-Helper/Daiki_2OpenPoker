@@ -10,6 +10,10 @@ private:
 
 	int sum_bet = 0;
 
+	int Phese = 0;
+
+	int bet_selectFlg;
+
 protected:
 	const int anty = 20;
 	const int bet[3] = { 100, 200, 300 };
@@ -19,6 +23,9 @@ public:
 	void DrawHavePoints();
 	void DrawSumBetPoints();
 	void Anty();
+	void CPU_Bet();
+	void Player_Bet();
+	int BetSelectFlg(int x);
 
 	int GetPlayerPt();
 	int GetCPUPt_left();

@@ -4,7 +4,19 @@
 void Point::DrawHavePoints()
 {
 	SetFontSize(10);
-	Anty();
+
+	if (Phese == 0)
+	{
+		Anty();
+		Phese = 1;
+	}
+	
+	if (Phese == 1)
+	{
+		CPU_Bet();
+		Phese = 2;
+	}
+
 	for (int i = 0; i < 4; i++)
 	{
 		if (i == 3)
@@ -46,6 +58,54 @@ void Point::Anty()
 	}
 	player_pt -= anty;
 	sum_bet += anty;
+
+}
+
+void Point::CPU_Bet()
+{
+	for (int i = 0; i < 3; i++)
+	{
+		cpu_pt[i] -= bet[0];
+		sum_bet += bet[0];
+	}
+}
+
+void Point::Player_Bet()
+{
+	
+	if (bet_selectFlg == 0)
+	{
+		player_pt -= bet[0] * 2;
+		sum_bet += bet[0] * 2;
+	}
+	else if (bet_selectFlg == 1)
+	{
+		player_pt -= bet[0];
+		sum_bet += bet[0];
+	}
+	else if (bet_selectFlg == 2)
+	{
+
+	}
+}
+
+int Point::BetSelectFlg(int x)
+{
+	if (x == 0)
+	{
+		bet_selectFlg = 0;
+		return 0;
+	}
+	else if (x == 1)
+	{
+		bet_selectFlg = 1;
+		return 1;
+	}
+	else if (x == 2)
+	{
+		bet_selectFlg = 2;
+		return 2;
+	}
 }
 
 int Point::GetPlayerPt()
