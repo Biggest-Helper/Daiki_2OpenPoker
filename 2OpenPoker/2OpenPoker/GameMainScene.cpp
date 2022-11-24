@@ -201,8 +201,3 @@ void GameMainScene::Draw() const
 		DrawBox(cursorX[selectNum], 650, cursorX[selectNum] + 100, 690, GetColor(255, 0, 0), FALSE);
 	}
 }
-
-int GameMainScene::getSelectNum()
-{
-	return selectNum;
-}

@@ -17,6 +17,12 @@ void Point::DrawHavePoints()
 		Phese = 2;
 	}
 
+	if (Phese == 2)
+	{
+		Player_Bet();
+		Phese = 3;
+	}
+
 	for (int i = 0; i < 4; i++)
 	{
 		if (i == 3)
@@ -89,22 +95,19 @@ void Point::Player_Bet()
 	}
 }
 
-int Point::BetSelectFlg(int x)
+void Point::BetSelectFlg(int x)
 {
 	if (x == 0)
 	{
 		bet_selectFlg = 0;
-		return 0;
 	}
 	else if (x == 1)
 	{
 		bet_selectFlg = 1;
-		return 1;
 	}
 	else if (x == 2)
 	{
 		bet_selectFlg = 2;
-		return 2;
 	}
 }
 

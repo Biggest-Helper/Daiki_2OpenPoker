@@ -12,7 +12,7 @@ private:
 
 	int Phese = 0;
 
-	int bet_selectFlg;
+	int bet_selectFlg = 99;
 
 protected:
 	const int anty = 20;
@@ -25,7 +25,7 @@ public:
 	void Anty();
 	void CPU_Bet();
 	void Player_Bet();
-	int BetSelectFlg(int x);
+	void BetSelectFlg(int x);
 
 	int GetPlayerPt();
 	int GetCPUPt_left();
