@@ -5,7 +5,7 @@ private:
 	int player_pt = 5000;
 	int cpu_pt[3] = { 5000, 5000, 5000 };
 
-	int cpu_pt_posX[3] = { 150, 585, 1030 };
+	int cpu_pt_posX[3] = { 120, 565, 1020 };
 	int cpu_pt_posY[3] = { 330, 50, 330 };
 
 	int sum_bet = 0;
@@ -13,6 +13,7 @@ private:
 	int Phese = 0;
 
 	int bet_selectFlg = 99;
+	int selectNum = 99;
 
 protected:
 	const int anty = 20;
@@ -25,7 +26,7 @@ public:
 	void Anty();
 	void CPU_Bet();
 	void Player_Bet();
-	void BetSelectFlg(int x);
+	void BetSelectFlg(int selectNum = 99);
 
 	int GetPlayerPt();
 	int GetCPUPt_left();

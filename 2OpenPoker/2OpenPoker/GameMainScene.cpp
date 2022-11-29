@@ -8,10 +8,12 @@ int Flag = TRUE;
 int	g_OldKey;				// 前回の入力キー
 int	g_NowKey;				// 今回の入力キー
 int	g_KeyFlg;				// 入力キー情報
+int GetCard[20];
 int selectNum = 0;
 int Phase = 0;
-int betFlg = TRUE;
 int AntyFlag = TRUE;
+
+
 
 //描画以外の更新を実装する
 AbstractScene* GameMainScene::Update()
@@ -23,13 +25,6 @@ AbstractScene* GameMainScene::Update()
 	g_BackImage = LoadGraph("../images/GreenFelt.png");
 
 	Point pt;
-
-	//CPUベッティング (デバッグ用AI非実装 全部コール選択)
-	if (Phese == 0 && betFlg == TRUE)
-	{
-		pt.CPU_Bet();
-		betFlg = FALSE;
-	}
 
 	if (Phese == 0)
 	{
@@ -94,15 +89,16 @@ void GameMainScene::Draw() const
 	//背景描画処理
 	DrawExtendGraph(0, 0, 1280, 720, g_BackImage, FALSE);
 
-	//プレイヤー、CPUの所持ベット描画
-	pt.DrawHavePoints();
+	/*if (Phese == 0)
+	{*/
+		//プレイヤー、CPUの所持ベット描画
+		pt.DrawHavePoints();
 
-	//ベット合計描画
-	pt.DrawSumBetPoints();
+		//ベット合計描画
+		pt.DrawSumBetPoints();
+	/*}*/
 
-
-
-	int GetCard[20];
+	
 
 	//カード配布(プレイヤー)
 	int PosX = 480;
