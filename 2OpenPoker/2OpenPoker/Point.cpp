@@ -70,12 +70,28 @@ void Point::CPU_Bet()
 	{
 		cpu_pt[i] -= bet[0];
 		sum_bet += bet[0];
-		/*if (i == 0)
+		if (i == 0)
 		{
-			DrawBox(cpu_pt_posX[i] + 50, cpu_pt_posY[i] + 85, cpu_pt_posX[i] + 100, cpu_pt_posY[i] + 115,
+			DrawBox(cpu_pt_posX[i] + 45, cpu_pt_posY[i] + 75, cpu_pt_posX[i] + 105, cpu_pt_posY[i] + 105,
 				GetColor(255, 255, 255), TRUE);
-			DrawString(cpu_pt_posX[i] + 50, cpu_pt_posY[i] + 90, "ベット", GetColor(0, 0, 0));
-		}*/
+			DrawString(cpu_pt_posX[i] + 50, cpu_pt_posY[i] + 82, "ベット", GetColor(0, 0, 0));
+		}
+		else if (i == 1)
+		{
+			DrawBox(cpu_pt_posX[i] + 185, cpu_pt_posY[i] + 10, cpu_pt_posX[i] + 245, cpu_pt_posY[i] + 40,
+				GetColor(255, 255, 255), TRUE);
+			DrawString(cpu_pt_posX[i] + 190, cpu_pt_posY[i] + 17, "コール", GetColor(0, 0, 0));
+		}
+		else if (i == 2)
+		{
+			DrawBox(cpu_pt_posX[i] + 45, cpu_pt_posY[i] + 75, cpu_pt_posX[i] + 105, cpu_pt_posY[i] + 105,
+				GetColor(255, 255, 255), TRUE);
+			DrawString(cpu_pt_posX[i] + 50, cpu_pt_posY[i] + 82, "コール", GetColor(0, 0, 0));
+		}
+		else
+		{
+
+		}
 
 	}
 }
