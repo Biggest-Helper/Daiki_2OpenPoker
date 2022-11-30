@@ -52,24 +52,24 @@ AbstractScene* GameMainScene::Update()
 			//レイズ処理
 			if (selectNum == 0)
 			{
-				pt.BetSelectFlg(0);
-				selectNum = 99;
+				pt.BetSelectFlg(selectNum);
+				selectNum = 0;
 				Phese = 1;
 			}
 
 			//コール処理
 			if (selectNum == 1)
 			{
-				pt.BetSelectFlg(1);
-				selectNum = 99;
+				pt.BetSelectFlg(selectNum);
+				selectNum = 1;
 				Phese = 1;
 			}
 
 			//フォールド処理
 			if (selectNum == 2)
 			{
-				pt.BetSelectFlg(2);
-				selectNum = 99;
+				pt.BetSelectFlg(selectNum);
+				selectNum = 2;
 				Phese = 1;
 			}
 		}
@@ -89,16 +89,26 @@ void GameMainScene::Draw() const
 	//背景描画処理
 	DrawExtendGraph(0, 0, 1280, 720, g_BackImage, FALSE);
 
-	/*if (Phese == 0)
-	{*/
-		//プレイヤー、CPUの所持ベット描画
-		pt.DrawHavePoints();
-
-		//ベット合計描画
-		pt.DrawSumBetPoints();
-	/*}*/
-
+	//if (Phese == 0)
+	//{
+	//	//プレイヤー、CPUの所持ベット描画
+	//	pt.DrawHavePoints();
+	//	//ベット合計描画
+	//	pt.DrawSumBetPoints();
+	//}
 	
+	if (Phese == 0)
+	{
+		//プレイヤー、CPUの所持ベット描画
+		//ベット合計描画
+		pt.DrawPhese();
+	}
+
+	if (Phese == 1)
+	{
+		pt.BetSelectFlg(selectNum);
+	}
+
 
 	//カード配布(プレイヤー)
 	int PosX = 480;

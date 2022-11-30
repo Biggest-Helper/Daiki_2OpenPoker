@@ -13,7 +13,8 @@ private:
 	int Phese = 0;
 
 	int bet_selectFlg = 99;
-	int selectNum = 99;
+
+	int ABS = TRUE;
 
 protected:
 	const int anty = 20;
@@ -21,6 +22,7 @@ protected:
 	const int reiz = 100;
 
 public:
+	void DrawPhese();
 	void DrawHavePoints();
 	void DrawSumBetPoints();
 	void Anty();

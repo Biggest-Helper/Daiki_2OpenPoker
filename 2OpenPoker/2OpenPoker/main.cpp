@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "time.h"
+#include "SceneManager.h"
 #include "GameMainScene.h"
 
 //ゲームステート
@@ -19,6 +20,7 @@ enum class GAME_STATE {
  * クラス型変数
  ***********************************************/
 GameMainScene MAIN;
+//SceneManeger sceneMng;
 
 
 
@@ -38,15 +40,21 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
-	SetFontSize(20);		// 文字サイズを設定
+	//SetFontSize(20);		// 文字サイズを設定
 
 	GAME_STATE	g_GameState = GAME_STATE::GAME_MAIN; // ゲームステータス
 													 
 	// ゲームループ
 	while (ProcessMessage() == 0)
 	{
+		double dNextTime = GetNowCount();
 		ClearDrawScreen();		// 画面の初期化
 		
+		/*if (Mng.Update() != nullptr)
+		{
+			sceneMng.Draw();
+		}*/
+
 		switch (g_GameState)
 		{
 		case GAME_STATE::GAME_MAIN:
@@ -54,6 +62,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 			MAIN.Draw();
 			break;
 		}
+
+		if (dNextTime + 16.66 > GetNowCount()) {
+			WaitTimer((int)dNextTime - GetNowCount());
+		}
+		ScreenFlip();
 	}
 
 	DxLib_End();	// DXライブラリ使用の終了処理

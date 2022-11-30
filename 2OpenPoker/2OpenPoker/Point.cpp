@@ -1,16 +1,14 @@
 #include "DxLib.h"
 #include "Point.h"
 
-void Point::DrawHavePoints()
+void Point::DrawPhese()
 {
-	SetFontSize(15);
-
 	if (Phese == 0)
 	{
 		Anty();
 		Phese = 1;
 	}
-	
+
 	if (Phese == 1)
 	{
 		CPU_Bet();
@@ -22,6 +20,23 @@ void Point::DrawHavePoints()
 		Player_Bet();
 		Phese = 3;
 	}
+
+	if (Phese == 3)
+	{
+		
+	}
+
+	//プレイヤー、CPUの所持ベット描画
+	DrawHavePoints();
+
+	//ベット合計描画
+	DrawSumBetPoints();
+
+}
+
+void Point::DrawHavePoints()
+{
+	SetFontSize(15);
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -54,24 +69,48 @@ void Point::DrawSumBetPoints()
 
 void Point::Anty()
 {
+	//CPU アンティ
 	for (int i = 0; i < 3; i++)
 	{
-		cpu_pt[i] -= anty;
-		sum_bet += anty;
+		int num = cpu_pt[i] - anty;
+		int num2 = sum_bet + anty;
+		
+		while (cpu_pt[i] != num && sum_bet != num2)
+		{
+			cpu_pt[i]--;
+			sum_bet++;
+		}
 	}
-	player_pt -= anty;
-	sum_bet += anty;
 
+	//プレイヤー アンティ
+	int num = player_pt - anty;
+	int num2 = sum_bet + anty;
+	while (player_pt != num && sum_bet != num2)
+	{
+		player_pt--;
+		sum_bet++;
+	}
 }
 
 void Point::CPU_Bet()
 {
 	for (int i = 0; i < 3; i++)
 	{
-		cpu_pt[i] -= bet[0];
-		sum_bet += bet[0];
+		//CPUベッティング処理
+		int num = cpu_pt[i] - bet[0];
+		int num2 = sum_bet + bet[0];
+		while (cpu_pt[i] != num && sum_bet != num2)
+		{
+			cpu_pt[i]--;
+			sum_bet++;
+		}
+
+		/*cpu_pt[i] -= bet[0];
+		sum_bet += bet[0];*/
+
 		if (i == 0)
 		{
+			SetFontSize(15);
 			DrawBox(cpu_pt_posX[i] + 45, cpu_pt_posY[i] + 75, cpu_pt_posX[i] + 105, cpu_pt_posY[i] + 105,
 				GetColor(255, 255, 255), TRUE);
 			DrawString(cpu_pt_posX[i] + 50, cpu_pt_posY[i] + 82, "ベット", GetColor(0, 0, 0));
@@ -92,7 +131,6 @@ void Point::CPU_Bet()
 		{
 
 		}
-
 	}
 }
 
@@ -102,7 +140,7 @@ void Point::Player_Bet()
 	{
 		player_pt -= bet[0] * 2;
 		sum_bet += bet[0] * 2;
-	
+		Phese = 1;
 	}
 	else if (bet_selectFlg == 1)
 	{
@@ -121,8 +159,16 @@ void Point::BetSelectFlg(int selectNum)
 	if (selectNum == 0)
 	{
 		bet_selectFlg = 0;
-		Phese = 3;
 	}
+	else if (selectNum == 1)
+	{
+		bet_selectFlg = 1;
+	}
+	else if (selectNum == 2)
+	{
+		bet_selectFlg = 2;
+	}
+	DrawPhese();
 }
 
 int Point::GetPlayerPt()
