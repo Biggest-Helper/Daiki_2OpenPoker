@@ -14,8 +14,6 @@ private:
 
 	int bet_selectFlg = 99;
 
-	int ABS = TRUE;
-
 protected:
 	const int anty = 20;
 	const int bet[3] = { 100, 200, 300 };
@@ -28,7 +26,9 @@ public:
 	void Anty();
 	void CPU_Bet();
 	void Player_Bet();
-	void BetSelectFlg(int selectNum = 99);
+	void BetSelectFlg(int selectNum);
+	void CardChange();
+
 
 	int GetPlayerPt();
 	int GetCPUPt_left();

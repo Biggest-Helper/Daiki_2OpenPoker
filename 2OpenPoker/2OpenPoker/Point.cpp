@@ -23,7 +23,7 @@ void Point::DrawPhese()
 
 	if (Phese == 3)
 	{
-		
+		CardChange();
 	}
 
 	//プレイヤー、CPUの所持ベット描画
@@ -141,16 +141,25 @@ void Point::Player_Bet()
 		player_pt -= bet[0] * 2;
 		sum_bet += bet[0] * 2;
 		Phese = 1;
+
+		SetFontSize(15);
+		DrawBox(440, 650, 540, 690, GetColor(255, 255, 255), TRUE);
+		DrawFormatString(464, 662, GetColor(0, 0, 0), "レイズ");
 	}
 	else if (bet_selectFlg == 1)
 	{
 		player_pt -= bet[0];
 		sum_bet += bet[0];
 	
+		SetFontSize(15);
+		DrawBox(590, 650, 690, 690, GetColor(255, 255, 255), TRUE);
+		DrawFormatString(615, 662, GetColor(0, 0, 0), "コール");
 	}
 	else if (bet_selectFlg == 2)
 	{
-
+		SetFontSize(15);
+		DrawBox(740, 650, 840, 690, GetColor(255, 255, 255), TRUE);
+		DrawFormatString(748, 662, GetColor(0, 0, 0), "フォールド");
 	}
 }
 
@@ -169,6 +178,11 @@ void Point::BetSelectFlg(int selectNum)
 		bet_selectFlg = 2;
 	}
 	DrawPhese();
+}
+
+void Point::CardChange()
+{
+
 }
 
 int Point::GetPlayerPt()

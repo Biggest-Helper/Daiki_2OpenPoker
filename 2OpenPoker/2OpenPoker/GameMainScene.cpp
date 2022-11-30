@@ -10,8 +10,8 @@ int	g_NowKey;				// 今回の入力キー
 int	g_KeyFlg;				// 入力キー情報
 int GetCard[20];
 int selectNum = 0;
+int CardSelect = 0;
 int Phase = 0;
-int AntyFlag = TRUE;
 
 
 
@@ -75,7 +75,60 @@ AbstractScene* GameMainScene::Update()
 		}
 	}
 
-	
+	if (Phese == 1)
+	{
+		//カーソル移動処理
+		if (g_KeyFlg & PAD_INPUT_RIGHT)
+		{
+			CardSelect++;
+			if (CardSelect > 4)
+			{
+				CardSelect = 0;
+			}
+		}
+		if (g_KeyFlg & PAD_INPUT_LEFT)
+		{
+			CardSelect--;
+			if (CardSelect < 0)
+			{
+				CardSelect = 4;
+			}
+		}
+
+		//Aボタンで選択肢決定
+		if (g_KeyFlg & PAD_INPUT_A)
+		{
+			//1枚目のカード
+			if (CardSelect == 0)
+			{
+				
+			}
+
+			//2枚目のカード
+			if (CardSelect == 1)
+			{
+
+			}
+
+			//3枚目のカード
+			if (CardSelect == 2)
+			{
+				
+			}
+
+			//4枚目のカード
+			if (CardSelect == 3)
+			{
+
+			}
+
+			//5枚目のカード
+			if (CardSelect == 4)
+			{
+
+			}
+		}
+	}
 
 	return this;
 }
@@ -106,6 +159,8 @@ void GameMainScene::Draw() const
 
 	if (Phese == 1)
 	{
+		//プレイヤー、CPUの所持ベット描画
+		//ベット合計描画
 		pt.BetSelectFlg(selectNum);
 	}
 
@@ -205,5 +260,11 @@ void GameMainScene::Draw() const
 
 		//カーソル描画
 		DrawBox(cursorX[selectNum], 650, cursorX[selectNum] + 100, 690, GetColor(255, 0, 0), FALSE);
+	}
+
+	if (Phese == 1)
+	{
+		//カーソル描画
+		DrawBox(cardCursorX[CardSelect] - 25, 515, cardCursorX[CardSelect] + 25, 585, GetColor(255, 0, 0), FALSE);
 	}
 }
