@@ -55,7 +55,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 0;
-				CardSelectFlg[selectNum] = FALSE;
+				CardSelectFlg[selectNum] = TRUE;
 				Phese = 1;
 			}
 
@@ -64,7 +64,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 1;
-				CardSelectFlg[selectNum] = FALSE;
+				CardSelectFlg[selectNum] = TRUE;
 				Phese = 1;
 			}
 
@@ -73,7 +73,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 2;
-				CardSelectFlg[selectNum] = FALSE;
+				CardSelectFlg[selectNum] = TRUE;
 				Phese = 1;
 			}
 		}
