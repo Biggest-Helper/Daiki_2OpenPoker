@@ -29,7 +29,6 @@ public:
 	void BetSelectFlg(int selectNum);
 	void CardChange();
 
-
 	int GetPlayerPt();
 	int GetCPUPt_left();
 	int GetCPUPt_senter();

@@ -140,11 +140,12 @@ void Point::Player_Bet()
 	{
 		player_pt -= bet[0] * 2;
 		sum_bet += bet[0] * 2;
-		Phese = 1;
 
 		SetFontSize(15);
 		DrawBox(440, 650, 540, 690, GetColor(255, 255, 255), TRUE);
 		DrawFormatString(464, 662, GetColor(0, 0, 0), "ÉåÉCÉY");
+
+		Phese = 1;
 	}
 	else if (bet_selectFlg == 1)
 	{

@@ -4,7 +4,6 @@
 #include "Point.h"
 
 #define PI    3.1415926535897932384626433832795f
-int Flag = TRUE;
 int	g_OldKey;				// 前回の入力キー
 int	g_NowKey;				// 今回の入力キー
 int	g_KeyFlg;				// 入力キー情報
@@ -12,7 +11,7 @@ int GetCard[20];
 int selectNum = 0;
 int CardSelect = 0;
 int Phase = 0;
-
+int CardSelectFlg[5];
 
 
 //描画以外の更新を実装する
@@ -25,6 +24,8 @@ AbstractScene* GameMainScene::Update()
 	g_BackImage = LoadGraph("../images/GreenFelt.png");
 
 	Point pt;
+
+
 
 	if (Phese == 0)
 	{
@@ -54,6 +55,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 0;
+				CardSelectFlg[selectNum] = FALSE;
 				Phese = 1;
 			}
 
@@ -62,6 +64,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 1;
+				CardSelectFlg[selectNum] = FALSE;
 				Phese = 1;
 			}
 
@@ -70,10 +73,13 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 2;
+				CardSelectFlg[selectNum] = FALSE;
 				Phese = 1;
 			}
 		}
 	}
+
+
 
 	if (Phese == 1)
 	{
@@ -98,34 +104,13 @@ AbstractScene* GameMainScene::Update()
 		//Aボタンで選択肢決定
 		if (g_KeyFlg & PAD_INPUT_A)
 		{
-			//1枚目のカード
-			if (CardSelect == 0)
+			if (CardSelectFlg[CardSelect] == FALSE)
 			{
-				
+				CardSelectFlg[CardSelect] = TRUE;
 			}
-
-			//2枚目のカード
-			if (CardSelect == 1)
+			else if (CardSelectFlg[CardSelect] == TRUE)
 			{
-
-			}
-
-			//3枚目のカード
-			if (CardSelect == 2)
-			{
-				
-			}
-
-			//4枚目のカード
-			if (CardSelect == 3)
-			{
-
-			}
-
-			//5枚目のカード
-			if (CardSelect == 4)
-			{
-
+				CardSelectFlg[CardSelect] = FALSE;
 			}
 		}
 	}
@@ -141,15 +126,9 @@ void GameMainScene::Draw() const
 	C.LoadImages();
 	//背景描画処理
 	DrawExtendGraph(0, 0, 1280, 720, g_BackImage, FALSE);
-
-	//if (Phese == 0)
-	//{
-	//	//プレイヤー、CPUの所持ベット描画
-	//	pt.DrawHavePoints();
-	//	//ベット合計描画
-	//	pt.DrawSumBetPoints();
-	//}
 	
+
+
 	if (Phese == 0)
 	{
 		//プレイヤー、CPUの所持ベット描画
@@ -165,6 +144,7 @@ void GameMainScene::Draw() const
 	}
 
 
+
 	//カード配布(プレイヤー)
 	int PosX = 480;
 	int PosY = 550;
@@ -175,7 +155,16 @@ void GameMainScene::Draw() const
 		{
 			GetCard[i] = C.CardDistribution();
 		}
-		DrawRotaGraph(PosX, PosY, 1.0f, 0, GetCard[i], FALSE);
+
+		if (CardSelectFlg[i] == TRUE)
+		{
+			DrawRotaGraph(PosX, PosY - 10, 1.0f, 0, GetCard[i], FALSE);
+		}
+		else
+		{
+			DrawRotaGraph(PosX, PosY, 1.0f, 0, GetCard[i], FALSE);
+		}
+
 		PosX += 80;
 	}
 
@@ -247,6 +236,8 @@ void GameMainScene::Draw() const
 		}
 	}
 
+
+
 	if (Phese == 0)
 	{
 		//選択肢描画
@@ -264,7 +255,13 @@ void GameMainScene::Draw() const
 
 	if (Phese == 1)
 	{
-		//カーソル描画
-		DrawBox(cardCursorX[CardSelect] - 25, 515, cardCursorX[CardSelect] + 25, 585, GetColor(255, 0, 0), FALSE);
+		if (CardSelectFlg[CardSelect] == TRUE)
+		{
+			DrawBox(cardCursorX[CardSelect] - 25, 505, cardCursorX[CardSelect] + 25, 575, GetColor(255, 0, 0), FALSE);
+		}
+		else
+		{
+			DrawBox(cardCursorX[CardSelect] - 25, 515, cardCursorX[CardSelect] + 25, 585, GetColor(255, 0, 0), FALSE);
+		}
 	}
 }
