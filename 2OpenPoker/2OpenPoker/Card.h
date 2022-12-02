@@ -7,13 +7,6 @@ private:
 	int card_back;
 
 public:
-	/*struct Cards
-	{
-		int img;
-	};
-	struct Cards cards[52];*/
-
-public:
 	int LoadImages();
 	int GetJoker();
 	int GetBack();
