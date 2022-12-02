@@ -14,6 +14,8 @@ public:
 	int Card_RanNum();       //カード配布関数(乱数)
 	int CardDistribution();  //カード配布関数
 
+	int CardChange();        //カード交換
+
 	//スペードのカード
 	int s_1();
 	int s_2();

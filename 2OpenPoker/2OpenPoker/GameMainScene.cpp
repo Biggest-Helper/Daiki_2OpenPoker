@@ -56,7 +56,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 0;
-				for (int i = 0; i < 5; i++)
+				/*for (int i = 0; i < 5; i++)
 				{
 					if (i == 0)
 					{
@@ -66,8 +66,8 @@ AbstractScene* GameMainScene::Update()
 					{
 						CardSelectFlg[i] = FALSE;
 					}
-				}
-				Phese = 1;
+				}*/
+				Phese = 0;
 			}
 
 			//ƒR[ƒ‹ˆ—
@@ -96,16 +96,9 @@ AbstractScene* GameMainScene::Update()
 				selectNum = 2;
 				for (int i = 0; i < 5; i++)
 				{
-					if (i == 0)
-					{
-						CardSelectFlg[i] = TRUE;
-					}
-					else
-					{
-						CardSelectFlg[i] = FALSE;
-					}
+					CardSelectFlg[i] = FALSE;
 				}
-				Phese = 1;
+				Phese = 2;
 			}
 		}
 	}

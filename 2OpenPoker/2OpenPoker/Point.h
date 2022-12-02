@@ -13,8 +13,8 @@ private:
 	int Phese = 0;
 
 	int bet_selectFlg = 99;
+	int reizCnt = 0;
 
-protected:
 	const int anty = 20;
 	const int bet[3] = { 100, 200, 300 };
 	const int reiz = 100;
