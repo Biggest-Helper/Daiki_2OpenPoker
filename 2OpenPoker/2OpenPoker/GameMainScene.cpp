@@ -12,6 +12,7 @@ int selectNum = 0;
 int CardSelect = 0;
 int Phase = 0;
 int CardSelectFlg[5];
+int DownKeyFlg = FALSE;
 
 
 //描画以外の更新を実装する
@@ -55,7 +56,17 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 0;
-				CardSelectFlg[selectNum] = TRUE;
+				for (int i = 0; i < 5; i++)
+				{
+					if (i == 0)
+					{
+						CardSelectFlg[i] = TRUE;
+					}
+					else 
+					{
+						CardSelectFlg[i] = FALSE;
+					}
+				}
 				Phese = 1;
 			}
 
@@ -64,7 +75,17 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 1;
-				CardSelectFlg[selectNum] = TRUE;
+				for (int i = 0; i < 5; i++)
+				{
+					if (i == 0)
+					{
+						CardSelectFlg[i] = TRUE;
+					}
+					else
+					{
+						CardSelectFlg[i] = FALSE;
+					}
+				}
 				Phese = 1;
 			}
 
@@ -73,7 +94,17 @@ AbstractScene* GameMainScene::Update()
 			{
 				pt.BetSelectFlg(selectNum);
 				selectNum = 2;
-				CardSelectFlg[selectNum] = TRUE;
+				for (int i = 0; i < 5; i++)
+				{
+					if (i == 0)
+					{
+						CardSelectFlg[i] = TRUE;
+					}
+					else
+					{
+						CardSelectFlg[i] = FALSE;
+					}
+				}
 				Phese = 1;
 			}
 		}
@@ -99,6 +130,10 @@ AbstractScene* GameMainScene::Update()
 			{
 				CardSelect = 4;
 			}
+		}
+		if (g_KeyFlg & PAD_INPUT_DOWN && DownKeyFlg != TRUE)
+		{
+			DownKeyFlg == TRUE;
 		}
 
 		//Aボタンで選択肢決定
