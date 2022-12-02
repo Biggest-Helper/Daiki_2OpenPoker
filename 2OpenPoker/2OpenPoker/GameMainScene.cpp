@@ -200,37 +200,48 @@ void GameMainScene::Draw() const
 	int PosY = 550;
 	for (int i = 0; i < 5; i++)
 	{
-		GetCard[i] = C.CardDistribution();
-		while (GetCard[i] == -1)
+		/*if (Phese > 1)
 		{
-			GetCard[i] = C.CardDistribution();
+			if (CardSelectFlg[i] == TRUE)
+			{
+				GetCard[i] = C.CardDistribution(i);
+				CardSelectFlg[i] = FALSE;
+			}
 		}
+		else 
+		{*/
+			GetCard[i] = C.CardDistribution(i);
+			while (GetCard[i] == -1)
+			{
+				GetCard[i] = C.CardDistribution(i);
+			}
 
-		if (CardSelectFlg[i] == TRUE)
-		{
-			DrawRotaGraph(PosX, PosY - 10, 1.0f, 0, GetCard[i], FALSE);
-		}
-		else
-		{
-			DrawRotaGraph(PosX, PosY, 1.0f, 0, GetCard[i], FALSE);
-		}
+			if (CardSelectFlg[i] == TRUE)
+			{
+				DrawRotaGraph(PosX, PosY - 10, 1.0f, 0, GetCard[i], FALSE);
+			}
+			else
+			{
+				DrawRotaGraph(PosX, PosY, 1.0f, 0, GetCard[i], FALSE);
+			}
 
-		PosX += 80;
+			PosX += 80;
+		/*}*/
 	}
 
 	//カード配布(CPU1)
 	PosX = 330;
 	PosY = 190;
-	for (int i = 0; i < 5; i++)
+	for (int i = 5; i < 10; i++)
 	{
-		GetCard[i + 5] = C.CardDistribution();
-		while (GetCard[i + 5] == -1)
+		GetCard[i] = C.CardDistribution(i);
+		while (GetCard[i] == -1)
 		{
-			GetCard[i + 5] = C.CardDistribution();
+			GetCard[i] = C.CardDistribution(i);
 		}
-		if (i == 0 || i == 1)
+		if (i == 5 || i == 6)
 		{
-			DrawRotaGraph(PosX, PosY, 0.9f, PI / 2, GetCard[i + 5], FALSE);
+			DrawRotaGraph(PosX, PosY, 0.9f, PI / 2, GetCard[i], FALSE);
 			PosY += 80;
 		}
 		else
@@ -243,17 +254,17 @@ void GameMainScene::Draw() const
 	//カード配布(CPU2)
 	PosX = 480;
 	PosY = 160;
-	for (int i = 0; i < 5; i++)
+	for (int i = 10; i < 15; i++)
 	{
-		GetCard[i + 10] = C.CardDistribution();
-		while (GetCard[i + 10] == -1)
+		GetCard[i] = C.CardDistribution(i);
+		while (GetCard[i] == -1)
 		{
-			GetCard[i + 10] = C.CardDistribution();
+			GetCard[i] = C.CardDistribution(i);
 		}
-		if (i == 0 || i == 1)
+		if (i == 10 || i == 11)
 		{
 			
-			DrawRotaGraph(PosX, PosY, 1.0f, -PI, GetCard[i + 10], FALSE);
+			DrawRotaGraph(PosX, PosY, 1.0f, -PI, GetCard[i], FALSE);
 			PosX += 80;
 		}
 		else
@@ -266,17 +277,17 @@ void GameMainScene::Draw() const
 	//カード配布(CPU3)
 	PosX = 950;
 	PosY = 190;
-	for (int i = 0; i < 5; i++)
+	for (int i = 15; i < 20; i++)
 	{
-		GetCard[i + 15] = C.CardDistribution();
-		while (GetCard[i + 15] == -1)
+		GetCard[i] = C.CardDistribution(i);
+		while (GetCard[i] == -1)
 		{
-			GetCard[i + 15] = C.CardDistribution();
+			GetCard[i] = C.CardDistribution(i);
 		}
-		if (i == 3 || i == 4)
+		if (i == 18 || i == 19)
 		{
 			
-			DrawRotaGraph(PosX, PosY, 0.9f, PI / -2, GetCard[i + 15], FALSE);
+			DrawRotaGraph(PosX, PosY, 0.9f, PI / -2, GetCard[i], FALSE);
 			PosY += 80;
 		}
 		else

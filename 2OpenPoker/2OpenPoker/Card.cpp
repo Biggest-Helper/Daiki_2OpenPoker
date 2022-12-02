@@ -28,7 +28,7 @@ int Card::Card_RanNum()
 	return LoadCard[x];
 }
 
-int Card::CardDistribution()
+int Card::CardDistribution(int num)
 {
 	//乱数は一度だけ呼び出し&参照し、
 	//以降のループは乱数から渡した変数のみを参照する
@@ -36,64 +36,32 @@ int Card::CardDistribution()
 	if (RanNumCnt < 20)
 	{
 		RanNumCnt++;
-		HandCard[RanNumCnt - 1] = Card_RanNum();
+		num++;
+		HandCard[num - 1] = Card_RanNum();
 		for (int i = 0; i < 20; i++)
 		{
-			if (HandCard[RanNumCnt - 1] == SaveCard[i])
+			if (HandCard[num - 1] == SaveCard[i])
 			{
-				HandCard[RanNumCnt - 1] = NULL;
+				HandCard[num - 1] = NULL;
 				RanNumCnt--;
 				return -1;
 			}
-			else if(RanNumCnt - 1 == i)
+			else if (num - 1 == i)
 			{
-				SaveCard[i] = HandCard[RanNumCnt - 1];
+				SaveCard[i] = HandCard[num - 1];
 			}
 		}
-		return HandCard[RanNumCnt - 1];
-	}
-	else if(RanNumCnt2 < 20)
-	{
-		RanNumCnt2++;
-		return HandCard[RanNumCnt2 - 1];
-	}
-	else
-	{
-		RanNumCnt2 = 1;
-		return HandCard[RanNumCnt2 - 1];
-	}
-}
-
-int Card::CardChange()
-{
-	if (RanNumCnt < 20)
-	{
-		RanNumCnt++;
-		ChangeCard = Card_RanNum();
-		for (int i = 0; i < 20; i++)
-		{
-			if (ChangeCard == SaveCard[i])
-			{
-				ChangeCard = NULL;
-				RanNumCnt--;
-				return -1;
-			}
-			else if (RanNumCnt - 1 == i)
-			{
-				SaveCard[i] = ChangeCard;
-			}
-		}
-		return ChangeCard;
+		return HandCard[num - 1];
 	}
 	else if (RanNumCnt2 < 20)
 	{
 		RanNumCnt2++;
-		return ChangeCard;
+		return HandCard[RanNumCnt2 - 1];
 	}
 	else
 	{
 		RanNumCnt2 = 1;
-		return ChangeCard;
+		return HandCard[RanNumCnt2 - 1];
 	}
 }
 
