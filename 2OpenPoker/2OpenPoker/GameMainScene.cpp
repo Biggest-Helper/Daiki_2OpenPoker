@@ -115,7 +115,36 @@ AbstractScene* GameMainScene::Update()
 	if (Phese == 1)
 	{
 		//カーソル移動処理
-		if (g_KeyFlg & PAD_INPUT_RIGHT)
+		if (g_KeyFlg & PAD_INPUT_DOWN)
+		{
+			DownKeyFlg = TRUE;
+		}
+		else if (g_KeyFlg & PAD_INPUT_UP)
+		{
+			DownKeyFlg = FALSE;
+		}
+		
+		if(DownKeyFlg == FALSE)
+		{
+			if (g_KeyFlg & PAD_INPUT_RIGHT)
+			{
+				CardSelect++;
+				if (CardSelect > 4)
+				{
+					CardSelect = 0;
+				}
+			}
+			if (g_KeyFlg & PAD_INPUT_LEFT)
+			{
+				CardSelect--;
+				if (CardSelect < 0)
+				{
+					CardSelect = 4;
+				}
+			}
+		}
+
+		/*if (g_KeyFlg & PAD_INPUT_RIGHT)
 		{
 			CardSelect++;
 			if (CardSelect > 4)
@@ -134,10 +163,32 @@ AbstractScene* GameMainScene::Update()
 		if (g_KeyFlg & PAD_INPUT_DOWN && DownKeyFlg != TRUE)
 		{
 			DownKeyFlg == TRUE;
-		}
+		}*/
 
 		//Aボタンで選択肢決定
-		if (g_KeyFlg & PAD_INPUT_A)
+		if (DownKeyFlg == TRUE)
+		{
+			if (g_KeyFlg & PAD_INPUT_A)
+			{
+				Phese = 2;
+			}
+		}
+		else if (DownKeyFlg == FALSE)
+		{
+			if (g_KeyFlg & PAD_INPUT_A)
+			{
+				if (CardSelectFlg[CardSelect] == FALSE)
+				{
+					CardSelectFlg[CardSelect] = TRUE;
+				}
+				else if (CardSelectFlg[CardSelect] == TRUE)
+				{
+					CardSelectFlg[CardSelect] = FALSE;
+				}
+			}
+		}
+
+		/*if (g_KeyFlg & PAD_INPUT_A)
 		{
 			if (CardSelectFlg[CardSelect] == FALSE)
 			{
@@ -147,7 +198,7 @@ AbstractScene* GameMainScene::Update()
 			{
 				CardSelectFlg[CardSelect] = FALSE;
 			}
-		}
+		}*/
 	}
 
 	return this;
@@ -290,13 +341,36 @@ void GameMainScene::Draw() const
 
 	if (Phese == 1)
 	{
-		if (CardSelectFlg[CardSelect] == TRUE)
+		SetFontSize(15);
+		DrawBox(610, 615, 670, 645, GetColor(255, 255, 255), TRUE);
+		DrawFormatString(624, 622, GetColor(0, 0, 0), "交換");
+
+		//カーソル描画
+		if (DownKeyFlg == TRUE)
+		{
+				DrawBox(610, 615, 670, 645, GetColor(255, 0, 0), FALSE);
+		}
+		else if (DownKeyFlg == FALSE)
+		{
+			if (CardSelectFlg[CardSelect] == TRUE)
+			{
+				DrawBox(cardCursorX[CardSelect] - 25, 505, cardCursorX[CardSelect] + 25, 575,
+					GetColor(255, 0, 0), FALSE);
+			}
+			else
+			{
+				DrawBox(cardCursorX[CardSelect] - 25, 515, cardCursorX[CardSelect] + 25, 585, 
+					GetColor(255, 0, 0), FALSE);
+			}
+		}
+
+		/*if (CardSelectFlg[CardSelect] == TRUE)
 		{
 			DrawBox(cardCursorX[CardSelect] - 25, 505, cardCursorX[CardSelect] + 25, 575, GetColor(255, 0, 0), FALSE);
 		}
 		else
 		{
 			DrawBox(cardCursorX[CardSelect] - 25, 515, cardCursorX[CardSelect] + 25, 585, GetColor(255, 0, 0), FALSE);
-		}
+		}*/
 	}
 }
