@@ -11,7 +11,7 @@ public:
 	int GetJoker();
 	int GetBack();
 
-	int Card_RanNum();       //カード配布関数(乱数)
+	int Card_RanNum();              //カード配布関数(乱数)
 	int CardDistribution(int num);  //カード配布関数
 
 	//スペードのカード

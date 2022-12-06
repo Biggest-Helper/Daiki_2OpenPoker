@@ -105,9 +105,6 @@ void Point::CPU_Bet()
 			sum_bet++;
 		}
 
-		/*cpu_pt[i] -= bet[0];
-		sum_bet += bet[0];*/
-
 		if (i == 0)
 		{
 			SetFontSize(15);
