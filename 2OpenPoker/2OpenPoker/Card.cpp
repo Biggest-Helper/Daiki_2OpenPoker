@@ -32,7 +32,6 @@ int Card::CardDistribution(int num)
 {
 	//乱数は一度だけ呼び出し&参照し、
 	//以降のループは乱数から渡した変数のみを参照する
-	//アルゴリズムを作る
 	if (RanNumCnt < 20)
 	{
 		RanNumCnt++;

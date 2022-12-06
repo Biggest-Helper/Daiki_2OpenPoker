@@ -225,7 +225,6 @@ void GameMainScene::Draw() const
 			{
 				GetCard[i] = C.CardDistribution(i);
 			}
-
 			if (CardSelectFlg[i] == TRUE)
 			{
 				DrawRotaGraph(PosX, PosY - 10, 1.0f, 0, GetCard[i], FALSE);
@@ -249,6 +248,8 @@ void GameMainScene::Draw() const
 		{
 			GetCard[i] = C.CardDistribution(i);
 		}
+
+		//2枚のカードのみオープンにする
 		if (i == 5 || i == 6)
 		{
 			DrawRotaGraph(PosX, PosY, 0.9f, PI / 2, GetCard[i], FALSE);
@@ -271,6 +272,8 @@ void GameMainScene::Draw() const
 		{
 			GetCard[i] = C.CardDistribution(i);
 		}
+
+		//2枚のカードのみオープンにする
 		if (i == 10 || i == 11)
 		{
 			
@@ -294,6 +297,8 @@ void GameMainScene::Draw() const
 		{
 			GetCard[i] = C.CardDistribution(i);
 		}
+
+		//2枚のカードのみオープンにする
 		if (i == 18 || i == 19)
 		{
 			

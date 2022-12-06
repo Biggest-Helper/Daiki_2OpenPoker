@@ -40,8 +40,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
-	//SetFontSize(20);		// 文字サイズを設定
-
 	GAME_STATE	g_GameState = GAME_STATE::GAME_MAIN; // ゲームステータス
 													 
 	// ゲームループ
@@ -49,11 +47,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 	{
 		double dNextTime = GetNowCount();
 		ClearDrawScreen();		// 画面の初期化
-		
-		/*if (Mng.Update() != nullptr)
-		{
-			sceneMng.Draw();
-		}*/
 
 		switch (g_GameState)
 		{
