@@ -200,16 +200,26 @@ void GameMainScene::Draw() const
 	int PosY = 550;
 	for (int i = 0; i < 5; i++)
 	{
-		/*if (Phese > 1)
-		{
-			if (CardSelectFlg[i] == TRUE)
-			{
-				GetCard[i] = C.CardDistribution(i);
-				CardSelectFlg[i] = FALSE;
-			}
-		}
-		else 
-		{*/
+		//if (Phese > 1)
+		//{
+		//	//ÉJÅ[Éhåä∑èàóù
+		//	if (CardSelectFlg[i] == TRUE)
+		//	{
+		//		GetCard[i] = C.CardDistribution(i);
+		//		while (GetCard[i] == -1)
+		//		{
+		//			GetCard[i] = C.CardDistribution(i);
+		//		}
+		//		CardSelectFlg[i] = FALSE;
+		//	}
+		//	else if(CardSelectFlg[i] == FALSE)
+		//	{
+		//		DrawRotaGraph(PosX, PosY, 1.0f, 0, GetCard[i], FALSE);
+		//	}
+		//	PosX += 80;
+		//}
+		//else 
+		//{
 			GetCard[i] = C.CardDistribution(i);
 			while (GetCard[i] == -1)
 			{
