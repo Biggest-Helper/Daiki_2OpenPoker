@@ -11,14 +11,14 @@ int ChangeCard;
 int Card::LoadImages()
 {
 	//デバッグ用
-	/*if (LoadDivGraph("../images/Card_Sozai_4.png", 52, 13, 4, 49, 70, LoadCard) == -1)return -1;
+	if (LoadDivGraph("../images/Card_Sozai_4.png", 52, 13, 4, 49, 70, LoadCard) == -1)return -1;
 	joker = LoadGraph("../images/Joker.png");
-	card_back = LoadGraph("../images/Back_Card2.png");*/
+	card_back = LoadGraph("../images/Back_Card2.png");
 
 	//リリース用
-	if (LoadDivGraph("images/Card_Sozai_4.png", 52, 13, 4, 49, 70, LoadCard) == -1)return -1;
+	/*if (LoadDivGraph("images/Card_Sozai_4.png", 52, 13, 4, 49, 70, LoadCard) == -1)return -1;
 	joker = LoadGraph("images/Joker.png");
-	card_back = LoadGraph("images/Back_Card2.png");
+	card_back = LoadGraph("images/Back_Card2.png");*/
 
 	return 0;
 }

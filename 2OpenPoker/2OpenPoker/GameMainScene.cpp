@@ -23,10 +23,10 @@ AbstractScene* GameMainScene::Update()
 	g_KeyFlg = g_NowKey & ~g_OldKey;
 
 	////デバッグ用
-	/*g_BackImage = LoadGraph("../images/GreenFelt.png");*/
+	g_BackImage = LoadGraph("../images/GreenFelt.png");
 
 	//リリース用
-	g_BackImage = LoadGraph("images/GreenFelt.png");
+	/*g_BackImage = LoadGraph("images/GreenFelt.png");*/
 
 	Point pt;
 
