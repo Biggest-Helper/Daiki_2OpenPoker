@@ -1,18 +1,10 @@
-#include "DxLib.h"
+#include "Dxlib.h"
+#include "common.h"
 #include "time.h"
 #include "SceneManager.h"
 #include "GameMainScene.h"
+#include "Fps.h"
 
-//ゲームステート
-enum class GAME_STATE {
-	GAME_TITLE,
-	GAME_MAIN = 0,
-	DRAW_END,
-	DRAW_GAME_OVER,
-	DRAW_GAME_CLEAR,
-
-	EXIT = 99
-};
 
 
 
@@ -40,6 +32,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
+	Fps* fps;
+	fps = new Fps;
+
 	GAME_STATE	g_GameState = GAME_STATE::GAME_MAIN; // ゲームステータス
 													 
 	// ゲームループ
@@ -50,9 +45,15 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 
 		switch (g_GameState)
 		{
+		case GAME_STATE::GAME_TITLE:
+			break;
+
 		case GAME_STATE::GAME_MAIN:
 			MAIN.Update();		       //ゲームメイン処理
 			MAIN.Draw();
+
+			fps->Update();
+			fps->Draw();
 			break;
 		}
 
@@ -60,8 +61,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE hPrevInstance,
 			WaitTimer((int)dNextTime - GetNowCount());
 		}
 		ScreenFlip();
+		fps->Wait();
 	}
-
+	
 	DxLib_End();	// DXライブラリ使用の終了処理
 
 	return 0;	// ソフトの終了

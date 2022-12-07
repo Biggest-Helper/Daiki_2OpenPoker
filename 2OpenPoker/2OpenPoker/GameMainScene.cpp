@@ -22,11 +22,21 @@ AbstractScene* GameMainScene::Update()
 	g_NowKey = GetJoypadInputState(DX_INPUT_KEY_PAD1);
 	g_KeyFlg = g_NowKey & ~g_OldKey;
 
-	g_BackImage = LoadGraph("../images/GreenFelt.png");
+	////デバッグ用
+	/*g_BackImage = LoadGraph("../images/GreenFelt.png");*/
+
+	//リリース用
+	g_BackImage = LoadGraph("images/GreenFelt.png");
 
 	Point pt;
 
+	//BACKボタンが押されたらゲーム終了
+	if (g_KeyFlg & 1024)
+	{
+		DxLib_End();
 
+		return 0;
+	}
 
 	if (Phese == 0)
 	{

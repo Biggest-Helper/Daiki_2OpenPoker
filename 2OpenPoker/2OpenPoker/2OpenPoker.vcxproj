@@ -155,18 +155,23 @@
   <ItemGroup>
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Fps.cpp" />
     <ClCompile Include="GameMainScene.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Title.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractScene.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="common.h" />
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Fps.h" />
     <ClInclude Include="GameMainScene.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
